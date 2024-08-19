@@ -1,0 +1,23 @@
+#navigation-container {
+  width: 4%;
+  min-width: 70px;
+  transition: width 0.3s ease-in-out;
+  overflow: hidden; /* Hide overflowing content during transition */
+}
+
+#navigation-container:hover {
+  width: calc(6% + 70px);
+}
+
+/* Initially hide nav-item-name */
+.nav-item-name {
+  opacity: 0;
+  width: 0;
+  transition: opacity 0.5s ease-in-out; /* Add opacity transition */
+}
+
+#navigation-container:hover .nav-item-name {
+  opacity: 1;
+  width: auto;
+}
+
