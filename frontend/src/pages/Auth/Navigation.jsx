@@ -13,6 +13,7 @@ import "./Navigation.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useLogoutMutation } from "../../redux/api/userApiSlice";
 import { logout } from "../../redux/features/auth/authSlice";
+import FavoriteCount from "../Product/FavoriteCount";
 
 const Navigation = () => {
   const { userInfo } = useSelector((state) => state.auth);
@@ -60,7 +61,7 @@ const Navigation = () => {
           to="/"
           className="flex items-center ml-1.5 transition-transform transform hover:translate-x-2"
         >
-          <div className="mr-2 mt-[3rem]">
+          <div className="mr-2 mt-[3rem] dark:text-indigo-600">
             <AiOutlineHome size={26} />
           </div>
           <span className="nav-item-name mt-[3rem]">Home</span>
@@ -69,7 +70,7 @@ const Navigation = () => {
           to="/shop"
           className="flex items-center ml-1.5 transition-transform transform hover:translate-x-2"
         >
-          <div className="mr-2 mt-[3rem]">
+          <div className="mr-2 mt-[3rem] dark:text-indigo-600">
             <AiOutlineShopping size={26} />
           </div>
           <span className="nav-item-name mt-[3rem]">Shop</span>
@@ -78,19 +79,20 @@ const Navigation = () => {
           to="/cart"
           className="flex items-center ml-1.5 transition-transform transform hover:translate-x-2"
         >
-          <div className="mr-2 mt-[3rem]">
+          <div className="mr-2 mt-[3rem] dark:text-indigo-600">
             <AiOutlineShoppingCart size={26} />
           </div>
           <span className="nav-item-name mt-[3rem]">Cart</span>
         </Link>
         <Link
-          to="/favorite"
+          to="/favorites"
           className="flex items-center ml-1.5 transition-transform transform hover:translate-x-2"
         >
-          <div className="mr-2 mt-[3rem]">
+          <div className="mr-2 mt-[3rem] dark:text-indigo-600">
             <FaHeart size={26} />
           </div>
-          <span className="nav-item-name mt-[3rem]">Favorite</span>
+          <span className="nav-item-name mt-[3rem]">Favorites</span>
+          <FavoriteCount />
         </Link>
       </div>
 
@@ -99,7 +101,6 @@ const Navigation = () => {
           onClick={toggleDropdown}
           className="flex items-center focus:outline-none"
         >
-          {console.log(userInfo?.username)}
           {userInfo ? (
             <span>{userInfo.username}</span>
           ) : (
