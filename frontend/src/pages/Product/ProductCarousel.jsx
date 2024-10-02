@@ -58,7 +58,8 @@ const ProductCarousel = () => {
                     &#8358; {p.price.toLocaleString()}
                   </p>
                   <p className="w-25rem mt-3">
-                    {p.description.substring(0, 170)}...
+                    {p?.description.substring(0, 170) +
+                      (p.description.length > 170 ? "..." : "")}
                   </p>
                 </div>
                 <div className="flex justify-between">

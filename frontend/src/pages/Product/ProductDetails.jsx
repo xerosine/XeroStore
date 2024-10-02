@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import {
   useGetProductDetailsQuery,
@@ -19,10 +19,12 @@ import moment from "moment";
 import HeartIcon from "../../components/HeartIcon";
 import Ratings from "./Ratings";
 import ProductTabs from "./ProductTabs";
+import { addToCart } from "../../redux/features/cart/cartSlice";
 
 const ProductDetails = () => {
   const { id: productId } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
@@ -51,9 +53,14 @@ const ProductDetails = () => {
       refetch();
       toast.success("Review created successfully!");
     } catch (error) {
-      console.error(error)
+      console.error(error);
       toast.error(error?.data || error.message);
     }
+  };
+
+  const addToCartHandler = () => {
+    dispatch(addToCart({ ...product, qty }));
+    navigate("/cart");
   };
 
   return (
@@ -75,8 +82,10 @@ const ProductDetails = () => {
         </Message>
       ) : (
         <>
-          <div className="flex flex-wrap relative items-between 
-          mt-[2rem] lg:ml-[9rem] 2xl:ml-[12rem] xl:mr-7">
+          <div
+            className="flex flex-wrap relative items-between 
+          mt-[2rem] lg:ml-[9rem] 2xl:ml-[12rem] xl:mr-7"
+          >
             <div className="xl:w-5/12 mr-[4rem]">
               <img
                 src={product.image}
@@ -155,7 +164,7 @@ const ProductDetails = () => {
               </div>
               <div className="btn-container">
                 <button
-                  // onClick={addToCartHandler}
+                  onClick={addToCartHandler}
                   disabled={product.countInStock === 0}
                   className="bg-indigo-600 text-white font-semibold disabled:bg-gray-400
                   py-2 px-4 rounded-lg mt-[1rem]"

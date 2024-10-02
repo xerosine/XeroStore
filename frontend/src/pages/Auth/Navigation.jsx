@@ -17,6 +17,7 @@ import FavoriteCount from "../Product/FavoriteCount";
 
 const Navigation = () => {
   const { userInfo } = useSelector((state) => state.auth);
+  const { cartItems } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -83,6 +84,16 @@ const Navigation = () => {
             <AiOutlineShoppingCart size={26} />
           </div>
           <span className="nav-item-name mt-[3rem]">Cart</span>
+          <div className="absolute left-[20px] top-[35px]">
+            {cartItems.length > 0 && (
+              <span
+                className="px-1.5 py-0 font-semibold text-sm bg-indigo-600 text-white rounded-full
+                dark:text-indigo-400 dark:bg-slate-800"
+              >
+                {cartItems.reduce((acc, item) => acc + item.qty, 0)}
+              </span>
+            )}  
+          </div>
         </Link>
         <Link
           to="/favorites"
@@ -101,11 +112,7 @@ const Navigation = () => {
           onClick={toggleDropdown}
           className="flex items-center focus:outline-none"
         >
-          {userInfo ? (
-            <span>{userInfo.username}</span>
-          ) : (
-            <></>
-          )}
+          {userInfo ? <span>{userInfo.username}</span> : <></>}
 
           {userInfo && (
             <svg

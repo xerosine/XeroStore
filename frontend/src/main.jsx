@@ -26,9 +26,11 @@ import CategoryList from "./pages/Admin/CategoryList";
 import ProductCreate from "./pages/Admin/ProductCreate";
 import ProductUpdate from "./pages/Admin/ProductUpdate";
 import AllProducts from "./pages/Admin/AllProducts";
+import ProductDetails from "./pages/Product/ProductDetails";
 import Home from "./pages/Home";
 import Favorites from "./pages/Product/Favorites";
-import ProductDetails from "./pages/Product/ProductDetails";
+import Cart from "./pages/Cart";
+import Shop from "./pages/Shop";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -37,6 +39,8 @@ const router = createBrowserRouter(
       <Route path="register" element={<Register />} />
       <Route index element={<Home />}></Route>
       <Route path="favorites" element={<Favorites />}></Route>
+      <Route path="cart" element={<Cart />}></Route>
+      <Route path="shop" element={<Shop />}></Route>
       <Route path="product/:id" element={<ProductDetails />}></Route>
 
       <Route path="" element={<PrivateRoute />}>
