@@ -55,7 +55,14 @@ const ProductCarousel = () => {
                     className="bg-indigo-100 text-indigo-800 font-medium w-fit 
                     px-2.5 py-1 rounded-full dark:bg-indigo-700 dark:text-indigo-100"
                   >
-                    &#8358; {p.price.toLocaleString()}
+                    &#8358;{" "}
+                    {p.price.toLocaleString(
+                      ("en-US",
+                      {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })
+                    )}
                   </p>
                   <p className="w-25rem mt-3">
                     {p?.description.substring(0, 170) +

@@ -95,7 +95,7 @@ const AdminMenu = () => {
               <NavLink
                 className="list-item p-3 block rounded-sm hover:bg-slate-300 dark:hover:bg-slate-700 
                 border-l-2 border-transparent hover:border-indigo-600"
-                to="/admin/dashboard"
+                to="/admin/orderlist"
                 style={({ isActive }) => ({
                   color: isActive ? "rgb(99 102 241)" : "",
                 })}

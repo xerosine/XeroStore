@@ -31,15 +31,15 @@ const cartSlice = createSlice({
     },
     saveShippingAddress: (state, action) => {
       state.shippingAddress = action.payload;
-      localStorage.setItem("cart", state);
+      localStorage.setItem("cart", JSON.stringify(state));
     },
     savePaymentMethod: (state, action) => {
       state.paymentMethod = action.payload;
-      localStorage.setItem("cart", state);
+      localStorage.setItem("cart", JSON.stringify(state));
     },
     clearCartItems: (state) => {
       state.cartItems = [];
-      localStorage.setItem("cart", state);
+      localStorage.setItem("cart", JSON.stringify(state));
     },
     resetCart: (state) => (state = initialState),
   },

@@ -33,7 +33,6 @@ router
   .delete(authenticate, authorizeAdmin, removeProduct);
 
 router.post("/:id/reviews", authenticate, checkId, addProductReview);
-
 router.post("/filtered-products", filterProducts);
 
 export default router;

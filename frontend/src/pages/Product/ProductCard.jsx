@@ -6,12 +6,12 @@ import { toast } from "react-toastify";
 import HeartIcon from "../../components/HeartIcon";
 
 const ProductCard = ({ product }) => {
-    const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-    const addToCartHandler = (product, qty) => {
-        dispatch(addToCart({...product, qty}))
-        toast.success('Item added successfully!')
-    }
+  const addToCartHandler = (product, qty) => {
+    dispatch(addToCart({ ...product, qty }));
+    toast.success("Item added successfully!");
+  };
 
   return (
     <div
@@ -57,8 +57,12 @@ const ProductCard = ({ product }) => {
           >
             Read More...
           </Link>
-          <button className="p-2 rounded-full" onClick={() => addToCartHandler(product, 1)}>
-            <AiOutlineShoppingCart size={25} className="text-indigo-600"/>
+          <button
+            className="p-2 rounded-full text-indigo-600 disabled:text-gray-400"
+            disabled={product.countInStock === 0}
+            onClick={() => addToCartHandler(product, 1)}
+          >
+            <AiOutlineShoppingCart size={25} className="" />
           </button>
         </section>
       </div>
