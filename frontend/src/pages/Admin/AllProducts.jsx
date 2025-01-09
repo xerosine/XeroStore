@@ -21,39 +21,47 @@ const AllProducts = () => {
   }
 
   return (
-    <div className="container px-4 lg:pl-[8rem] xl:pl-[10rem] xl:pr-0 2xl:max-w-full 2xl:w-3/4">
+    <div className="mx-auto px-2  md:px-4 lg:pl-[7rem] xl:pl-[9rem] xl:pr-0 2xl:max-w-[85%]">
       <AdminMenu />
-      <div className="flex flex-col md:flex-row">
-        <div className="p-3">
-          <div className="ml-2 text-2xl font-bold h-12 my-10">
+      <div className="flex flex-col">
+        <div className="md:p-3">
+          <div className="ml-2 text-2xl text-center font-bold h-12 my-10">
             All Products ({products.length})
           </div>
 
-          <div className="flex flex-wrap justify-between items-center">
+          <div
+            className="flex flex-row flex-wrap justify-around
+          items-start"
+          >
             {products.map((product) => (
               <div
                 key={product._id}
-                className="block mb-10 overflow-hidden mr-7"
+                className="block mb-10 overflow-hidden lg:mr-7 w-[45%] sm:w-[18rem] md:w-[21rem]"
               >
-                <div className="flex">
+                <div className="flex flex-col w-full mx-auto">
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-[10rem] h-[10rem] object-cover"
+                    className="object-cover max-h-[20rem] md:min-h-[14rem]"
                   />
-                  <div className="px-4 py-1 flex flex-col justify-around">
-                    <h5 className="text-lg 2xl:text-xl font-semibold mb-1">
+                  <div className="px-1 sm:px-3 py-2 flex flex-col justify-around">
+                    <h5 className="text-[1.3rem] md:text-[1.5rem] 2xl:text-xl font-semibold mb-1">
                       {product?.name}
                     </h5>
                     <div className="flex justify-between">
-                      <p className="text-gray-500 dark:text-gray-400 text-sm mb-2">
+                      <p
+                        className="text-gray-500 w-2/4 md:w-3/5 dark:text-gray-400 text-[.85rem] 
+                        md:text-[1.2rem] mb-2"
+                      >
                         {moment(product?.createdAt).format("MMMM Do, YYYY")}
                       </p>
-                      <p className="mr-7">&#8358; {product?.price}</p>
+                      <p className="w-2/4 md:w-2/5 text-sm md:text-xl ml-2 md:ml-4">
+                        &#8358; {product?.price}
+                      </p>
                     </div>
                     <p
-                      className="text-gray-600 dark:text-gray-300 xl:w-[20rem] md:w-[17rem] 
-                      sm:w-[13rem] text-sm mb-4"
+                      className="text-gray-700 dark:text-gray-300 md:w-[17rem] 
+                      sm:w-[13rem] text-[.98rem] md:text-[1.3rem] mb-4"
                     >
                       {product?.description.substring(0, 160) +
                         (product.description.length > 160 ? "..." : "")}
@@ -61,8 +69,8 @@ const AllProducts = () => {
                     <div className="flex justify-between">
                       <Link
                         to={`/admin/product/update/${product._id}`}
-                        className="inline-flex items-center py-3 px-2 text-sm font-medium text-center
-                        text-white bg-indigo-600 rounded-lg hover:bg-indigo-500"
+                        className="inline-flex items-center py-3 px-2 text-sm md:text-xl font-medium 
+                        text-center text-white bg-indigo-600 rounded-lg hover:bg-indigo-500"
                       >
                         Update Product
                         <svg

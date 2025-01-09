@@ -57,8 +57,8 @@ const UserList = () => {
   return (
     <div className="p-8">
       <AdminMenu />
-      <div className="w-full md:w-4/5 mx-auto">
-        <h1 className="text-2xl font-semibold my-12 ml-3">Users</h1>
+      <div className="w-full md:w-[96%] max-w-[750px] mx-auto">
+        <h1 className="text-2xl font-semibold my-12 ml-3 text-center md:text-left">Users</h1>
         {isLoading ? (
           <Loader />
         ) : error ? (
@@ -66,8 +66,7 @@ const UserList = () => {
             {error?.data?.message || error.message}
           </Message>
         ) : (
-          <div className="flex flex-col md:flex-row">
-            {/* admin menu */}
+          <div className="flex flex-col md:flex-row overflow-auto">
             <table className="w-full">
               <thead>
                 <tr>

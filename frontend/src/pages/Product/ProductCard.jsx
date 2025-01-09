@@ -15,8 +15,8 @@ const ProductCard = ({ product }) => {
 
   return (
     <div
-      className="max-w-sm bg-[1A1A1A] relative rounded-lg shadow 
-        dark:bg-gray-800 dark:border-gray-700"
+      className="w-[15rem] md:w-[20rem] lg:w-[25rem] xl:w-[80%] max-w-[400px] bg-slate-300 relative 
+      rounded-lg shadow-sm shadow-indigo-400 dark:bg-gray-800 dark:border-gray-700 md:mx-auto"
     >
       <section className="relative">
         <Link to={`/product/${product._id}`}>
@@ -29,15 +29,16 @@ const ProductCard = ({ product }) => {
           <img
             src={product.image}
             alt={product.name}
-            className="cursor-pointer w-full object-cover"
+            className="cursor-pointer w-full object-cover 
+            max-h-[320px] lg:max-h-[400px] xl:max-h-[336px]"
           />
         </Link>
         <HeartIcon product={product} />
       </section>
-      <div className="p-5">
+      <div className="py-5 px-3">
         <div className="flex justify-between">
-          <h5 className="mb-2 text-xl w-3/5">{product.name}</h5>
-          <p className="font-semibold text-indigo-500">
+          <h5 className="mb-2 text-[1rem] md:text-[1.23rem] w-2/4 font-medium">{product.name}</h5>
+          <p className="text-[.95rem] md:text-[1.1rem] font-semibold text-indigo-600">
             &#8358;{" "}
             {product.price.toLocaleString("en-US", {
               minimumFractionDigits: 2,
@@ -45,15 +46,15 @@ const ProductCard = ({ product }) => {
             })}
           </p>
         </div>
-        <p className="mb-3">
+        <p className="mb-3 text-[.93rem] md:text-[1.1rem]">
           {product?.description.substring(0, 160) +
             (product.description.length > 160 ? "..." : "")}
         </p>
         <section className="flex justify-between items-center">
           <Link
             to={`/product/${product._id}`}
-            className="inline-flex items-center p-1 text-md font-medium text-center
-            text-gray-500 rounded-lg hover:text-gray-400"
+            className="inline-flex items-center p-1 text-[.93rem] md:text-[1.1rem] 
+            font-medium text-center text-gray-500 rounded-lg hover:text-gray-400"
           >
             Read More...
           </Link>

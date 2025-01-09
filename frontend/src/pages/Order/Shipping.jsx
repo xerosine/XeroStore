@@ -37,10 +37,10 @@ const Shipping = () => {
   };
 
   return (
-    <>
+    <div className="mt-[4rem]">
       <ProgressSteps step1 step2 />
-      <div className="container mx-auto mt-10">
-        <div className="mt-[10rem] flex justify-around items-center flex-wrap">
+      <div className="container px-3 mx-auto mt-10 mb-5">
+        <div className="mt-[4rem] flex justify-around items-center flex-wrap">
           <form onSubmit={submitHandler} className="w-[40rem]">
             <h1 className="text-2xl font-semibold mb-7">Shipping</h1>
             <div className="mb-6">
@@ -114,7 +114,7 @@ const Shipping = () => {
               </label>
             </div>
             <button
-              className="bg-indigo-600 text-white py-2 px-4 rounded-lg text-lg w-1/4
+              className="bg-indigo-600 text-white py-2 px-4 rounded-lg text-lg w-2/5 md:w-1/4
             hover:bg-indigo-500"
             >
               Continue
@@ -122,7 +122,7 @@ const Shipping = () => {
           </form>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

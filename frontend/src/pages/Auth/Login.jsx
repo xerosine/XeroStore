@@ -40,10 +40,10 @@ const Login = () => {
 
   return (
     <div>
-      <section className="pl-[12rem] flex flex-wrap justify-evenly">
-        <div className="mr-[4rem] mt-[5rem] max-w-xl">
-          <h1 className="text-2xl font-semibold mb-4">Sign In</h1>
-          <form onSubmit={submitHandler} className="container w-[35rem]">
+      <section className="pl-[4.5rem] md:pl-[12rem] flex flex-wrap lg:justify-evenly">
+        <div className="mr-[4rem] mt-[5rem] max-w-[80%] lg:max-w-[35%]">
+          <h1 className="text-xl md:text-3xl 2xl:text-4xl font-semibold mb-4">Sign In</h1>
+          <form onSubmit={submitHandler} className="container lg:w-[35rem]">
             <div className="my-[2rem]">
               <label htmlFor="email" className="block font-medium">
                 Email Address
@@ -53,7 +53,8 @@ const Login = () => {
                 name="email"
                 id="email"
                 placeholder="Enter your email"
-                className="mt-1 p-2 border rounded w-full text-black focus:outline-none"
+                className="mt-2 p-1 px-2 lg:py-2 lg:w-2/4 border rounded bg-transparent 
+                focus:outline-none"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -67,15 +68,16 @@ const Login = () => {
                 name="password"
                 id="password"
                 placeholder="Enter your password"
-                className="mt-1 p-2 border rounded w-full text-black focus:outline-none"
+                className="mt-2 p-1 px-2 lg:py-2 lg:w-2/4 border rounded bg-transparent 
+                focus:outline-none"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <button
               disabled={isLoading}
-              className="bg-indigo-600 text-white font-semibold px-4 py-2 rounded cursor-pointer 
-              my-[1rem] hover:bg-indigo-700"
+              className="bg-indigo-600 text-white font-semibold px-3 py-2 rounded cursor-pointer 
+              my-[1rem] hover:bg-indigo-500 disabled:bg-indigo-500"
             >
               {isLoading ? "Signing In..." : "Sign In"}
             </button>
@@ -95,7 +97,7 @@ const Login = () => {
           src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&ixid=
           M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80"
           alt=""
-          className="h-[97vh] w-[55%] 2xl:block xl:hidden md:hidden sm:hidden rounded-lg"
+          className="lg:h-[96vh] w-[55%] hidden lg:block rounded-lg"
         />
       </section>
     </div>

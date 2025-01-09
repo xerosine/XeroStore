@@ -56,7 +56,7 @@ const ProductTabs = ({
             handleTabClick(3);
           }}
         >
-          Related products
+          Top products
         </div>
       </section>
       <section>

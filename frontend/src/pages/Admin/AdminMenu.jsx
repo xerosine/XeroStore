@@ -12,9 +12,10 @@ const AdminMenu = () => {
   return (
     <>
       <button
+        style={{ zIndex: 10 }}
         className={`${
-          isMenuOpen ? "top-2 right-2" : "top-5 right-7"
-        } bg-slate-200 dark:bg-slate-900 p-2 fixed rounded`}
+          isMenuOpen ? "top-2 right-2" : "top-3 right-4"
+        } bg-slate-300 dark:bg-slate-950 p-2 fixed rounded`}
         onClick={toggleMenu}
       >
         {isMenuOpen ? (
@@ -29,7 +30,7 @@ const AdminMenu = () => {
       </button>
 
       {isMenuOpen && (
-        <section className="bg-slate-200 dark:bg-slate-800 p-2 fixed right-8 top-7">
+        <section className="bg-slate-200 dark:bg-slate-800 p-2 fixed right-8 top-7 z-20">
           <ul className="list-none m-1">
             <li>
               <NavLink

@@ -28,7 +28,7 @@ const ProductCarousel = () => {
   };
 
   return (
-    <div className="mb-4 mt-2 md:block">
+    <div className="mb-4 mt-2 w-[70%] lg:w-3/4 xl:w-5/12 xl:max-w-[32rem]">
       {isLoading ? null : error ? (
         <Message variant={"danger"}>
           {error?.data?.message || error.message}
@@ -36,24 +36,26 @@ const ProductCarousel = () => {
       ) : (
         <Slider
           {...settings}
-          className="sm:block sm:w-[40rem] md:inline-block md:w-[40rem] lg:w-[40rem]"
         >
           {products.map((p) => (
             <div key={p._id}>
+              <div className="lg:flex xl:block lg:flex-row lg:justify-between">
               <img
                 src={p.image}
                 alt={p.name}
-                className="w-full rounded-lg object-cover h-[35rem]"
+                className="w-full h-[35vh] rounded-lg object-cover max-h-[35rem] md:h-[27rem]
+                lg:w-2/4 xl:w-full"
               />
               <Link
                 to={`/product/${p._id}`}
-                className="flex justify-between w-full mt-3 px-2"
+                className="flex flex-wrap justify-between w-full lg:w-2/4 xl:w-full
+                mt-3 px-2 lg:pl-[2rem] xl:pl-4"
               >
-                <div className="w-5/12">
-                  <h2 className="font-semibold mb-2">{p.name}</h2>
+                <div className="w-full">
+                  <h2 className="font-semibold mb-2 md:text-xl">{p.name}</h2>
                   <p
-                    className="bg-indigo-100 text-indigo-800 font-medium w-fit 
-                    px-2.5 py-1 rounded-full dark:bg-indigo-700 dark:text-indigo-100"
+                    className="bg-indigo-200 text-indigo-900 font-medium w-fit text-sm md:text-lg
+                    px-2.5 py-1 rounded-full dark:bg-indigo-700 dark:text-indigo-100 md:my-4"
                   >
                     &#8358;{" "}
                     {p.price.toLocaleString(
@@ -64,12 +66,12 @@ const ProductCarousel = () => {
                       })
                     )}
                   </p>
-                  <p className="w-25rem mt-3">
+                  <p className="w-25rem mt-3 text-sm md:text-lg md:mb-4 xl:mr-5">
                     {p?.description.substring(0, 170) +
                       (p.description.length > 170 ? "..." : "")}
                   </p>
                 </div>
-                <div className="flex justify-between">
+                <div className="hidden md:flex justify-between">
                   <div className="mr-10">
                     <div className="flex items-center mb-6 w-8rem">
                       <FaStore className="mr-2 text-indigo-700" /> Brand:{" "}
@@ -100,6 +102,7 @@ const ProductCarousel = () => {
                   </div>
                 </div>
               </Link>
+              </div>
             </div>
           ))}
         </Slider>

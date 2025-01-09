@@ -30,6 +30,7 @@ import ProductCreate from "./pages/Admin/ProductCreate";
 import ProductUpdate from "./pages/Admin/ProductUpdate";
 import AllProducts from "./pages/Admin/AllProducts";
 import OrderList from "./pages/Admin/OrderList";
+import AdminDashboard from "./pages/Admin/AdminDashboard";
 
 //regular routes
 import ProductDetails from "./pages/Product/ProductDetails";
@@ -67,6 +68,7 @@ const router = createBrowserRouter(
         <Route path="orderlist" element={<OrderList />}></Route>
         <Route path="product/create" element={<ProductCreate />}></Route>
         <Route path="product/update/:id" element={<ProductUpdate />}></Route>
+        <Route path="dashboard" element={<AdminDashboard />}></Route>
       </Route>
     </Route>
   )

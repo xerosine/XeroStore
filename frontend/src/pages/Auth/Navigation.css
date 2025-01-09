@@ -1,12 +1,9 @@
 #navigation-container {
-  width: 4%;
-  min-width: 70px;
-  transition: width 0.3s ease-in-out;
   overflow: hidden; /* Hide overflowing content during transition */
 }
 
 #navigation-container:hover {
-  width: calc(6% + 70px);
+  width: calc(5.5% + 100px);
 }
 
 /* Initially hide nav-item-name */

@@ -95,9 +95,9 @@ const Order = () => {
   ) : error ? (
     <Message variant="danger">{error.data.message}</Message>
   ) : (
-    <div className="contaner flex flex-col ml-[10rem] md:flex-row">
-      <div className="md:w-2/3 pr-4">
-        <div className="border border-slate-700 my-5 p-4 rounded">
+    <div className="flex flex-col xl:ml-[6rem] lg:flex-row py-5 px-2 md:px-4">
+      <div className="lg:w-2/3">
+        <div className="max-w-[90%] border border-slate-700 my-5 p-4 rounded mx-auto lg:ml-[3.5rem]">
           {order.orderItems.length === 0 ? (
             <Message>Order is empty</Message>
           ) : (
@@ -154,7 +154,7 @@ const Order = () => {
         </div>
       </div>
 
-      <div className="md:w-1/3 mx-4">
+      <div className="md:w-1/3 mx-4 md:ml-10 xl:mr-14">
         <div className="mt-5 border-slate-700 dark:border-slate-700 pb-4 mb-4">
           <h2 className="text-xl font-bold mb-2">Shipping</h2>
           <p className="mb-4 mt-4">

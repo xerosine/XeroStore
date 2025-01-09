@@ -42,21 +42,21 @@ const PlaceOrder = () => {
   }, [cart.shippingAddress, navigate]);
 
   return (
-    <>
+    <div className="mt-[1rem] p-2">
       <ProgressSteps step1 step2 step3 />
-      <div className="container mx-auto mt-8">
+      <div className="max-w-[50rem] mx-auto mt-8">
         {cart.cartItems.length === 0 ? (
           <Message>Your cart is empty.</Message>
-        ) : (
+        ) : ( 
           <div className="overflow-x-auto mt-[4rem]">
-            <table className="w-full border-collapse">
+            <table className="w-full min-w-[40rem] border-collapse">
               <thead>
                 <tr>
-                  <th className="px-1 px-2 text-left align-top">Image</th>
-                  <th className="px-1 px-2 text-left">Name</th>
-                  <th className="px-1 px-2 text-left">Quantity</th>
-                  <th className="px-1 px-2 text-left">Price</th>
-                  <th className="px-1 px-2 text-left">Total</th>
+                  <th className="px-2 text-left align-top">Image</th>
+                  <th className="px-2 text-left">Name</th>
+                  <th className="pr-4 text-left">Quantity</th>
+                  <th className="px-2 text-left">Price</th>
+                  <th className="px-2 text-left">Total</th>
                 </tr>
               </thead>
               <tbody>
@@ -72,7 +72,7 @@ const PlaceOrder = () => {
                     <td className="p-2">
                       <Link to={`/product/${item._id}`}>{item.name}</Link>
                     </td>
-                    <td className="p-2">{item.qty}</td>
+                    <td className="p-2 pl-6">{item.qty}</td>
                     <td className="p-2">
                       &#8358;{" "}
                       {Number(item.price).toLocaleString("en-US", {
@@ -94,9 +94,10 @@ const PlaceOrder = () => {
           </div>
         )}
         <div className="mt-[5rem]">
-          <h2 className="text-2xl font-semibold mb-10">Order Summary</h2>
+          <h2 className="text-2xl font-semibold mb-10 ml-2">Order Summary</h2>
+          {error && <Message variant="danger">{error.data.message}</Message>}
           <div className="flex justify-around flex-wrap py-4 px-2 bg-slate-800">
-            <ul className="text-lg">
+            <ul className="text-lg w-[90%] md:w-1/3 lg:w-[28%] mx-4">
               <li className="my-2">
                 <span className="font-semibold mb-2 inline-block w-[5rem]">
                   Items:{" "}
@@ -147,9 +148,7 @@ const PlaceOrder = () => {
               </li>
             </ul>
 
-            {error && <Message variant="danger">{error.data.message}</Message>}
-
-            <div>
+            <div className="mx-4 lg:mx-0 mt-6 md:mt-1 w-[90%] md:w-1/4 lg:w-[30%]">
               <h2 className="text-xl font-semibold mb-4">Shipping</h2>
               <p>
                 <strong>Address: </strong>
@@ -159,7 +158,7 @@ const PlaceOrder = () => {
               </p>
             </div>
 
-            <div>
+            <div className="mx-4 lg:mx-0 mt-6 md:mt-1 w-[90%] md:w-1/4 lg:w-[30%]">
               <h2 className="text-xl font-semibold mb-4">Payment Method</h2>
               <strong>Method: </strong> {cart.paymentMethod}
             </div>
@@ -168,7 +167,7 @@ const PlaceOrder = () => {
           <button
             type="button"
             className="bg-indigo-600 text-white py-2 px-4 rounded-lg text-lg 
-            text-center w-[10rem] mt-4 disabled:bg-indigo-400"
+            text-center w-[10rem] my-6 disabled:bg-indigo-400"
             disabled={cart.cartItems.length === 0}
             onClick={placeOrderHandler}
           >
@@ -178,7 +177,7 @@ const PlaceOrder = () => {
           {isLoading && <Loader />}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

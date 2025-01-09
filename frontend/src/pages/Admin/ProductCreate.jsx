@@ -36,7 +36,7 @@ const ProductCreate = () => {
       productData.append("category", category);
       productData.append("brand", brand);
       productData.append("quantity", quantity);
-      productData.append("countInStock", stock);      
+      productData.append("countInStock", stock);
 
       const { data } = await createProduct(productData);
       if (data.error) {
@@ -69,13 +69,11 @@ const ProductCreate = () => {
     <div className="container xl:pl-[9rem] sm:px-[0]">
       <div className=" md:ml-7 md:mt-3">
         <AdminMenu />
-        <div className="p-3">
+        <div className="py-3 lg:pt-10 px-8 md:pl-[4rem] lg:pl-[8rem]">
           <h1 className="h-12 text-2xl font-semibold my-5">Create Product</h1>
-          <div
-            className={`md:w-3/4 flex items-center`}
-          >
+          <div className={`md:w-3/4 flex flex-col md:flex-row items-center`}>
             {imageUrl && (
-              <div className="mb-3 mr-10">
+              <div className="mb-3 mx-3 md:mr-10">
                 <img
                   src={imageUrl}
                   alt="product image"
@@ -103,7 +101,7 @@ const ProductCreate = () => {
           </div>
           <div className="py-3">
             <div className="flex flex-wrap">
-              <div className="one mr-10 mb-4">
+              <div className="one mr-7 mb-4">
                 <label htmlFor="name" className="font-semibold">
                   Name
                 </label>
@@ -112,13 +110,14 @@ const ProductCreate = () => {
                   type="text"
                   id="name"
                   value={name}
-                  className="p-3 my-2 w-[25rem] border-slate-700 dark:border-slate-300 border-0 
-                  border-b-2 text-black dark:text-white bg-transparent focus:shadow-none focus:rounded
-                  focus:ring-0 focus:border focus:border-slate-700 dark:focus:border-slate-300"
+                  className="p-3 my-2 w-full max-w-[30rem] border-slate-700 dark:border-slate-300 
+                  border-0 border-b-2 text-black dark:text-white bg-transparent focus:shadow-none 
+                  focus:rounded focus:ring-0 focus:border focus:border-slate-700 
+                  dark:focus:border-slate-300"
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>
-              <div className="two mr-10 mb-4">
+              <div className="two mr-7 mb-4">
                 <label htmlFor="price" className="font-semibold">
                   Price
                 </label>
@@ -127,15 +126,16 @@ const ProductCreate = () => {
                   type="number"
                   id="price"
                   value={price}
-                  className="p-3 my-2 w-[25rem] border-slate-700 dark:border-slate-300 border-0 
-                  border-b-2 text-black dark:text-white bg-transparent focus:shadow-none focus:rounded
-                  focus:ring-0 focus:border focus:border-slate-700 dark:focus:border-slate-300"
+                  className="p-3 my-2 w-full max-w-[30rem] border-slate-700 dark:border-slate-300 
+                  border-0 border-b-2 text-black dark:text-white bg-transparent focus:shadow-none 
+                  focus:rounded focus:ring-0 focus:border focus:border-slate-700 
+                  dark:focus:border-slate-300"
                   onChange={(e) => setPrice(e.target.value)}
                 />
               </div>
             </div>
             <div className="flex flex-wrap">
-              <div className="one mr-10 mb-4">
+              <div className="one mr-7 mb-4">
                 <label htmlFor="quantity" className="font-semibold">
                   Quantity
                 </label>
@@ -144,13 +144,14 @@ const ProductCreate = () => {
                   type="number"
                   id="quantity"
                   value={quantity}
-                  className="p-3 my-2 w-[25rem] border-slate-700 dark:border-slate-300 border-0 
-                  border-b-2 text-black dark:text-white bg-transparent focus:shadow-none focus:rounded
-                  focus:ring-0 focus:border focus:border-slate-700 dark:focus:border-slate-300"
+                  className="p-3 my-2 w-full max-w-[30rem] border-slate-700 dark:border-slate-300 
+                  border-0 border-b-2 text-black dark:text-white bg-transparent focus:shadow-none 
+                  focus:rounded focus:ring-0 focus:border focus:border-slate-700 
+                  dark:focus:border-slate-300"
                   onChange={(e) => setQuantity(e.target.value)}
                 />
               </div>
-              <div className="two mr-10 mb-4">
+              <div className="two mr-7 mb-4">
                 <label htmlFor="brand" className="font-semibold">
                   Brand
                 </label>
@@ -159,9 +160,10 @@ const ProductCreate = () => {
                   type="text"
                   id="brand"
                   value={brand}
-                  className="p-3 my-2 w-[25rem] border-slate-700 dark:border-slate-300 border-0 
-                  border-b-2 text-black dark:text-white bg-transparent focus:shadow-none focus:rounded
-                  focus:ring-0 focus:border focus:border-slate-700 dark:focus:border-slate-300"
+                  className="p-3 my-2 w-full max-w-[30rem] border-slate-700 dark:border-slate-300 
+                  border-0 border-b-2 text-black dark:text-white bg-transparent focus:shadow-none 
+                  focus:rounded focus:ring-0 focus:border focus:border-slate-700 
+                  dark:focus:border-slate-300"
                   onChange={(e) => setBrand(e.target.value)}
                 />
               </div>
@@ -175,14 +177,15 @@ const ProductCreate = () => {
                 type="text"
                 id="description"
                 value={description}
-                className="p-3 my-2 w-[50rem] border-slate-700 dark:border-slate-300 border-0 min-h-16
-                  border-b-2 text-black dark:text-white bg-transparent focus:shadow-none focus:rounded
-                  focus:ring-0 focus:border focus:border-slate-700 dark:focus:border-slate-300 max-h-52"
+                className="p-3 my-2 w-full max-w-[75%] xl:max-w-[50rem] 
+                border-0 min-h-16 border-b-2 text-black dark:text-white bg-transparent 
+                focus:shadow-none focus:rounded focus:ring-0 focus:border focus:border-slate-700 
+                dark:focus:border-slate-300 max-h-52 border-slate-700 dark:border-slate-300"
                 onChange={(e) => setDescription(e.target.value)}
               />
             </div>
             <div className="flex flex-wrap">
-              <div className="one mr-10 mb-4">
+              <div className="one mr-7 mb-4">
                 <label htmlFor="stock" className="font-semibold">
                   In Stock
                 </label>
@@ -191,22 +194,24 @@ const ProductCreate = () => {
                   type="number"
                   id="stock"
                   value={stock}
-                  className="p-3 my-2 w-[25rem] border-slate-700 dark:border-slate-300 border-0 
-                  border-b-2 text-black dark:text-white bg-transparent focus:shadow-none focus:rounded
-                  focus:ring-0 focus:border focus:border-slate-700 dark:focus:border-slate-300"
+                  className="p-3 my-2 w-full max-w-[30rem] border-slate-700 dark:border-slate-300 
+                  border-0 border-b-2 text-black dark:text-white bg-transparent focus:shadow-none 
+                  focus:rounded focus:ring-0 focus:border focus:border-slate-700 
+                  dark:focus:border-slate-300"
                   onChange={(e) => setStock(e.target.value)}
                 />
               </div>
-              <div className="two mr-10 mb-4">
+              <div className="two mr-7 mb-4">
                 <label htmlFor="category" className="font-semibold">
                   Category
                 </label>
                 <br />
                 <select
                   id="category"
-                  className="p-3 my-2 w-[25rem] border-slate-700 dark:border-slate-300 border-0 
-                  border-b-2 text-black dark:text-white bg-transparent focus:shadow-none focus:rounded
-                  focus:ring-0 focus:border focus:border-slate-700 dark:focus:border-slate-300"
+                  className="p-3 my-2 w-full max-w-[30rem] border-slate-700 dark:border-slate-300 
+                  border-0 border-b-2 text-black dark:text-white bg-transparent focus:shadow-none 
+                  focus:rounded focus:ring-0 focus:border focus:border-slate-700 
+                  dark:focus:border-slate-300"
                   onChange={(e) => setCategory(e.target.value)}
                 >
                   <option value="" className="text-black">

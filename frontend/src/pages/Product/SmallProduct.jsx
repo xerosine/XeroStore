@@ -3,7 +3,7 @@ import HeartIcon from "../../components/HeartIcon"
 
 const SmallProduct = ({ product }) => {
   return (
-    <div className="w-[17rem] ml-[2rem] p-3">
+    <div className="w-[18rem] ml-[2rem] p-3">
       <div className="relative">
         <img
           src={product.image}
@@ -14,10 +14,10 @@ const SmallProduct = ({ product }) => {
         <div className="px-1 py-4">
           <Link to={`/product/${product._id}`}>
             <h2 className="flex justify-between">
-              <div className="w-2/4">{product.name}</div>
+              <div className="w-2/4 font-semibold">{product.name}</div>
               <div>
                 <span
-                  className="bg-indigo-100 text-indigo-800 text-sm font-medium mx-1 
+                  className="bg-indigo-200 text-indigo-900 text-md font-medium mx-1 
                   px-2.5 py-1 rounded-full dark:bg-indigo-700 dark:text-indigo-100"
                 >
                   &#8358; {product.price.toLocaleString()}

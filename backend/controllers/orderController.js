@@ -128,10 +128,11 @@ const calculateSalesByDate = async (req, res) => {
           _id: {
             $dateToString: { format: "%Y-%m-%d", date: "$paidAt" },
           },
-          totalSales: { $sum: "$totalPrice" },
+          totalSales: { $sum: {$toDecimal : "$totalPrice"} },
         },
       },
     ]);
+    console.log(salesByDate);
     res.json(salesByDate);
   } catch (error) {
     res.status(500).json({ error: error.message });

@@ -34,14 +34,14 @@ const Cart = () => {
           </div>
         ) : (
           <>
-            <div className="flex flex-col w-[80%] max-w-[60rem]">
-              <h1 className="text-2xl font-semibold mb-[2.5rem]">
+            <div className="flex flex-col items-center w-[90%] max-w-[60rem]">
+              <h1 className="text-2xl text-center font-semibold mb-[2.5rem]">
                 Shopping Cart
               </h1>
               {cartItems.map((item) => (
                 <div
                   key={item._id}
-                  className="flex items-center mb-[1rem] pb-2"
+                  className="flex items-center justify-around w-full max-w-[690px] mb-[1rem] pb-2"
                 >
                   <div className="w-[5rem] h-[5rem]">
                     <img
@@ -50,7 +50,7 @@ const Cart = () => {
                       className="w-full h-full object-cover rounded"
                     />
                   </div>
-                  <div className="flex-1 ml-4">
+                  <div className="ml-4 mr-3 w-1/3">
                     <Link
                       to={`/product/${item._id}`}
                       className="text-indigo-600 text-lg font-semibold"
@@ -62,9 +62,9 @@ const Cart = () => {
                       &#8358; {item.price.toLocaleString("en-US")}
                     </div>
                   </div>
-                  <div className="w-24">
+                  <div className="max-w-[80px]">
                     <select
-                      className="w-full px-2 border rounded bg-transparent"
+                      className="w-full py-2 pl-2 -pr-1 text-sm border rounded bg-transparent"
                       value={item.qty}
                       onChange={(e) =>
                         addToCartHandler(item, Number(e.target.value))
@@ -82,7 +82,7 @@ const Cart = () => {
                     </select>
                   </div>
                   <div>
-                    <button className="text-red-500 mr-[5rem]">
+                    <button className="text-red-500 mx-[.5rem]">
                       <FaTrash
                         className="ml-[1rem] mt-[.5rem]"
                         onClick={() => removeFromCartHandler(item._id)}
@@ -93,12 +93,12 @@ const Cart = () => {
               ))}
               <div className="mt-8 w-40rem">
                 <div className="p-4 rounded-lg">
-                  <h2 className="text-xl font-semibold mb-2">
+                  <h2 className="text-xl text-center font-semibold mb-2">
                     Items (
                     {Number(cartItems.reduce((acc, item) => acc + item.qty, 0))}
                     )
                   </h2>
-                  <div className="text-2xl font-bold">
+                  <div className="text-2xl text-center font-bold">
                     &#8358;{" "}
                     {Number(itemsPrice).toLocaleString("en-US", {
                       minimumFractionDigits: 2,
