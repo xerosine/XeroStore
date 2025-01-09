@@ -23,7 +23,9 @@ const OrderList = () => {
       ) : (
         <div>
           <AdminMenu />
-          <h1 className="mx-auto md:w-2/3 max-w-[850px] text-2xl font-semibold lg:mt-[6rem] my-12 text-center md:text-left">
+          <h1 
+          className="mx-auto md:w-2/3 max-w-[850px] text-2xl font-semibold lg:mt-[6rem] 
+          my-12 text-center md:text-left">
             Orders
           </h1>
           <div className="max-w-full overflow-auto px-3 mb-8">

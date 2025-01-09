@@ -1,13 +1,17 @@
 import { useState, useEffect, useRef } from "react";
 import {
+  AiFillHome,
   AiOutlineHome,
+  AiFillShopping,
   AiOutlineShopping,
   AiOutlineLogin,
   AiOutlineUserAdd,
   AiOutlineShoppingCart,
+  AiFillMoon,
+  AiOutlineSun
 } from "react-icons/ai";
-import { FaHeart } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { FaHeart, FaRegHeart, FaShoppingCart } from "react-icons/fa";
+import { Link, NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./Navigation.css";
 import { useSelector, useDispatch } from "react-redux";
@@ -15,7 +19,7 @@ import { useLogoutMutation } from "../../redux/api/userApiSlice";
 import { logout } from "../../redux/features/auth/authSlice";
 import FavoriteCount from "../Product/FavoriteCount";
 
-const Navigation = () => {
+const Navigation = ({setMode, mode}) => {
   const { userInfo } = useSelector((state) => state.auth);
   const { cartItems } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
@@ -51,6 +55,11 @@ const Navigation = () => {
     }
   };
 
+  const handleChangeMode = () => {
+    setMode(!mode)
+    localStorage.setItem('mode', mode)
+  }
+
   useEffect(() => {
     document.addEventListener("mousedown", closeSidebar);
     return () => {
@@ -84,57 +93,82 @@ const Navigation = () => {
         id="navigation-container"
       >
         <div className="flex flex-col justify-center space-y-2 max-h-[50%]">
-          <Link
+          <NavLink
             to="/"
             className="flex items-center text-sm font-semibold lg:text-lg lg:font-normal
             ml-[0.1rem] transition-transform transform hover:translate-x-2"
           >
-            <div className="mr-2 mt-10 lg:mt-[3rem] dark:text-indigo-600">
-              <AiOutlineHome size={27} />
-            </div>
-            <span className="nav-item-name mt-10 lg:mt-[3rem]">Home</span>
-          </Link>
-          <Link
+            {({isActive}) => (
+              <>
+                <div className="mr-2 mt-10 lg:mt-[3rem] dark:text-indigo-600">
+                  {isActive ? <AiFillHome size={27} /> : <AiOutlineHome size={27} />}
+                </div>
+                <span className="nav-item-name mt-10 lg:mt-[3rem]">Home</span>
+              </>
+            )}
+          </NavLink>
+          <NavLink
             to="/shop"
             className="flex items-center text-sm font-semibold lg:text-lg lg:font-normal
             ml-[0.1rem] transition-transform transform hover:translate-x-2"
           >
-            <div className="mr-2 mt-10 lg:mt-[3rem] dark:text-indigo-600">
-              <AiOutlineShopping size={27} />
-            </div>
-            <span className="nav-item-name mt-10 lg:mt-[3rem]">Shop</span>
-          </Link>
-          <Link
+            {({isActive}) => (
+              <>
+                <div className="mr-2 mt-10 lg:mt-[3rem] dark:text-indigo-600">
+                  {isActive ? <AiFillShopping size={27} /> : <AiOutlineShopping size={27} />}
+                </div>
+                <span className="nav-item-name mt-10 lg:mt-[3rem]">Shop</span>
+              </>
+            )}
+          </NavLink>
+          <NavLink
             to="/cart"
             className="flex items-center text-sm font-semibold lg:text-lg lg:font-normal
             ml-[0.1rem] transition-transform transform hover:translate-x-2"
           >
-            <div className="mr-2 mt-10 lg:mt-[3rem] dark:text-indigo-600">
-              <AiOutlineShoppingCart size={27}/>
-            </div>
-            <span className="nav-item-name mt-10 lg:mt-[3rem]">Cart</span>
-            <div className="absolute left-[20px] top-[35px]">
-              {cartItems.length > 0 && (
-                <span
-                  className="px-1.5 py-0 font-semibold text-sm bg-indigo-600 text-white rounded-full
-                dark:text-indigo-400 dark:bg-slate-800"
-                >
-                  {cartItems.reduce((acc, item) => acc + item.qty, 0)}
-                </span>
-              )}
-            </div>
-          </Link>
-          <Link
+            {({isActive}) => (
+              <>
+                <div className="mr-2 mt-10 lg:mt-[3rem] dark:text-indigo-600">
+                  {isActive ? <FaShoppingCart size={27} /> : <AiOutlineShoppingCart size={27} />}
+                </div>
+                <span className="nav-item-name mt-10 lg:mt-[3rem]">Cart</span>
+                <div className="absolute left-[20px] top-[35px]">
+                  {cartItems.length > 0 && (
+                    <span
+                      className="px-1.5 py-0 font-semibold text-sm bg-indigo-600 text-white rounded-full
+                    dark:text-indigo-400 dark:bg-slate-800"
+                    >
+                      {cartItems.reduce((acc, item) => acc + item.qty, 0)}
+                    </span>
+                  )}
+                </div>
+              </>
+            )}
+          </NavLink>
+          <NavLink
             to="/favorites"
             className="flex items-center text-sm font-semibold lg:text-lg lg:font-normal
             ml-[0.1rem] transition-transform transform hover:translate-x-2"
           >
+            {({isActive}) => (
+              <>
+                <div className="mr-2 mt-10 lg:mt-[3rem] dark:text-indigo-600">
+                  {isActive ? <FaHeart size={27} /> : <FaRegHeart size={27} />}
+                </div>
+                <span className="nav-item-name mt-10 lg:mt-[3rem]">Favorites</span>
+                <FavoriteCount />
+              </>
+            )}
+          </NavLink>
+          <button 
+          onClick={handleChangeMode}
+          className="flex items-center text-sm font-semibold lg:text-lg lg:font-normal
+          ml-[0.1rem] transition-transform transform hover:translate-x-2">
             <div className="mr-2 mt-10 lg:mt-[3rem] dark:text-indigo-600">
-              <FaHeart size={27} />
-            </div>
-            <span className="nav-item-name mt-10 lg:mt-[3rem]">Favorites</span>
-            <FavoriteCount />
-          </Link>
+                  {mode ? <AiOutlineSun size={27} /> : <AiFillMoon size={27} />}
+                </div>
+                <span className="nav-item-name mt-10 lg:mt-[3rem]">{mode ? "Light" : "Dark"}</span>
+          </button>
         </div>
 
         <div className="relative">
