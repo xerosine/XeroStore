@@ -60,8 +60,6 @@ const Navigation = ({setDarkMode, darkMode}) => {
   const handleChangeMode = () => {
     setDarkMode(darkMode => !darkMode)
     localStorage.setItem('mode', JSON.stringify(!darkMode))
-    console.log(localStorage.getItem('mode'));
-    
   }
 
   useEffect(() => {

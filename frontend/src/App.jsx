@@ -6,7 +6,6 @@ import { useState } from "react";
 
 function App() {
   const [darkMode, setDarkMode] = useState(Boolean(JSON.parse(localStorage.getItem('mode'))))
-  console.log(darkMode);
   
   if (darkMode === undefined) {
     setDarkMode(false)
