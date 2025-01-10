@@ -1,8 +1,12 @@
 import mongoose from "mongoose";
 
+const dbURI =
+  process.env.NODE_ENV === "production"
+    ? process.env.DB_URI
+    : "mongodb://localhost:27017/xerostore";
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.DB_URI);
+    await mongoose.connect(dbUri);
     console.log("mongo connected succesfully!");
   } catch (error) {
     console.error(`Error: ${error.message}`);
