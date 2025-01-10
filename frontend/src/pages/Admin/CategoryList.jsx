@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
 import {
   useCreateCategoryMutation,
@@ -22,9 +22,6 @@ const CategoryList = () => {
   const [updateCategory] = useUpdateCategoryMutation();
   const [deleteCategory] = useDeleteCategoryMutation();
 
-  useEffect(() => {
-    refetch();
-  });
 
   const handleCreateCategory = async (e) => {
     e.preventDefault();
@@ -41,6 +38,7 @@ const CategoryList = () => {
       } else {
         setName("");
         toast.success(`${result.name} category created!`);
+        refetch()
       }
     } catch (error) {
       console.error(error);
@@ -71,6 +69,7 @@ const CategoryList = () => {
         setSelectedCategory(null);
         setUpdatingName("");
         setModalVisible(false);
+        refetch()
       }
     } catch (error) {
       console.error(error);
@@ -87,6 +86,7 @@ const CategoryList = () => {
         toast.success(`${result.name} category deleted!`);
         setSelectedCategory(null);
         setModalVisible(false);
+        refetch()
       }
     } catch (error) {
       console.error(error);

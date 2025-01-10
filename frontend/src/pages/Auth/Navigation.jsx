@@ -19,7 +19,9 @@ import { useLogoutMutation } from "../../redux/api/userApiSlice";
 import { logout } from "../../redux/features/auth/authSlice";
 import FavoriteCount from "../Product/FavoriteCount";
 
-const Navigation = ({setMode, mode}) => {
+const Navigation = ({setDarkMode, darkMode}) => {
+  console.log(darkMode);
+  
   const { userInfo } = useSelector((state) => state.auth);
   const { cartItems } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
@@ -56,8 +58,10 @@ const Navigation = ({setMode, mode}) => {
   };
 
   const handleChangeMode = () => {
-    setMode(!mode)
-    localStorage.setItem('mode', mode)
+    setDarkMode(darkMode => !darkMode)
+    localStorage.setItem('mode', JSON.stringify(!darkMode))
+    console.log(localStorage.getItem('mode'));
+    
   }
 
   useEffect(() => {
@@ -165,9 +169,9 @@ const Navigation = ({setMode, mode}) => {
           className="flex items-center text-sm font-semibold lg:text-lg lg:font-normal
           ml-[0.1rem] transition-transform transform hover:translate-x-2">
             <div className="mr-2 mt-10 lg:mt-[3rem] dark:text-indigo-600">
-                  {mode ? <AiOutlineSun size={27} /> : <AiFillMoon size={27} />}
+                  {darkMode ? <AiOutlineSun size={27} /> : <AiFillMoon size={27} />}
                 </div>
-                <span className="nav-item-name mt-10 lg:mt-[3rem]">{mode ? "Light" : "Dark"}</span>
+                <span className="nav-item-name mt-10 lg:mt-[3rem]">{darkMode ? "Light" : "Dark"}</span>
           </button>
         </div>
 

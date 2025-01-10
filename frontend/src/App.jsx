@@ -5,15 +5,18 @@ import "react-toastify/ReactToastify.css";
 import { useState } from "react";
 
 function App() {
-  const [darkMode, setDarkMode] = useState(localStorage.getItem('mode'))
+  const [darkMode, setDarkMode] = useState(Boolean(JSON.parse(localStorage.getItem('mode'))))
+  console.log(darkMode);
+  
   if (darkMode === undefined) {
-    localStorage.setItem('mode', false)
+    setDarkMode(false)
+    localStorage.setItem('mode', JSON.stringify(false))
   }
 
   return (
     <div className={darkMode ? "dark" : ""}>
       <ToastContainer />
-      <Navigation setMode={setDarkMode} mode={darkMode} />
+      <Navigation setDarkMode={setDarkMode} darkMode={darkMode} />
 
       <main className="py-3 min-h-screen text-slate-900 dark:text-slate-300 
       bg-gradient-to-r from-slate-200 to-slate-300 dark:from-slate-900 dark:to-slate-950">
