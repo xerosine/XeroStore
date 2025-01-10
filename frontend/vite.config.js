@@ -7,7 +7,7 @@ export default defineConfig(({mode}) => {
   const isProd = mode === "production"
   const baseURL =
     isProd
-      ? import.meta.env.VITE_API_BASE_URL
+      ? "https://xerostore-backend.onrender.com"
       : "http://localhost:3000";
   console.log(baseURL);
   
