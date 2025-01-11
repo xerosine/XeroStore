@@ -64,7 +64,7 @@ const ProductDetails = () => {
   };
 
   return (
-    <div className="2xl:max-w-[80%]">
+    <div className="2xl:max-w-[85%]">
       <div className="px-2 mt-12">
         <Link
           to={"/"}
