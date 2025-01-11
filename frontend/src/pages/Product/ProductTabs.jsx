@@ -26,10 +26,12 @@ const ProductTabs = ({
   }
 
   return (
-    <div className="flex flex-col md:flex-row">
-      <section className="mr-[5rem] pr-7 border-r-2 border-indigo-600 w-[15rem]">
+    <div className="flex flex-col md:flex-row w-full md:w-auto">
+      <section 
+      className="lg:mr-[5rem] lg:pr-7 mb-4
+      border-r-2 border-indigo-600 w-[15rem] md:w-[13rem] lg:w-[18rem]">
         <div
-          className={`flex-1 p-4 cursor-pointer text-lg ${
+          className={`flex-1 p-4 md:pl-0 lg:pl-4 lg:mb-4 cursor-pointer text-lg lg:text-2xl ${
             activeTab === 1 ? "font-bold text-indigo-500" : ""
           }`}
           onClick={() => {
@@ -39,7 +41,7 @@ const ProductTabs = ({
           Write your review
         </div>
         <div
-          className={`flex-1 p-4 cursor-pointer text-lg ${
+          className={`flex-1 p-4 md:pl-0 lg:pl-4 lg:mb-4 cursor-pointer text-lg lg:text-2xl ${
             activeTab === 2 ? "font-bold text-indigo-500" : ""
           }`}
           onClick={() => {
@@ -49,7 +51,7 @@ const ProductTabs = ({
           All reviews
         </div>
         <div
-          className={`flex-1 p-4 cursor-pointer text-lg ${
+          className={`flex-1 p-4 md:pl-0 lg:pl-4 lg:mb-4 cursor-pointer text-lg lg:text-2xl ${
             activeTab === 3 ? "font-bold text-indigo-500" : ""
           }`}
           onClick={() => {
@@ -61,18 +63,19 @@ const ProductTabs = ({
       </section>
       <section>
         {activeTab === 1 && (
-          <div className="mt-4">
+          <div className="mt-4 pl-3 md:ml-8">
             {userInfo ? (
               <form onSubmit={submitHandler}>
                 <div className="my-2">
-                  <label htmlFor="rating" className="block text-xl mb-4">
+                  <label htmlFor="rating" className="block text-xl lg:text-2xl mb-6">
                     Rate this product
                   </label>
                   <select
                     value={rating}
                     id="rating"
                     onChange={(e) => setRating(e.target.value)}
-                    className="py-2 px-3 rounded-lg border md:w-[15rem] bg-transparent"
+                    className="py-2 px-3 rounded-lg border lg:text-xl 
+                    md:w-[15rem] bg-transparent"
                     required
                   >
                     <option className="text-black" value="">
@@ -95,8 +98,8 @@ const ProductTabs = ({
                     </option>
                   </select>
                 </div>
-                <div className="my-6">
-                  <label htmlFor="comment" className="block text-xl mb-2">
+                <div className="my-6 lg:my-8">
+                  <label htmlFor="comment" className="block text-xl lg:text-2xl mb-2">
                     {" "}
                     Leave a comment
                   </label>
@@ -104,14 +107,14 @@ const ProductTabs = ({
                     value={comment}
                     id="comment"
                     onChange={(e) => setComment(e.target.value)}
-                    className="p-2 border rounded-lg md:w-[25rem] bg-transparent"
+                    className="p-2 border rounded-lg lg:text-xl md:w-[25rem] bg-transparent"
                   ></textarea>
                 </div>
                 <button
                   type="submit"
                   disabled={loadingReviews}
                   className="bg-indigo-600 text-white py-2 px-4 rounded-lg 
-                  disabled:bg-gray-400 mb-6 font-semibold"
+                  disabled:bg-gray-400 mb-6 font-semibold lg:text-xl"
                 >
                   Submit
                 </button>
@@ -130,7 +133,7 @@ const ProductTabs = ({
       </section>
       <section>
         {activeTab === 2 && (
-          <>
+          <div className="px-3 md:ml-8">
             <div className="mt-4 text-lg font-semibold">
               {product.reviews.length === 0 && <p>No Reviews</p>}
             </div>
@@ -150,12 +153,12 @@ const ProductTabs = ({
                 </div>
               ))}
             </div>
-          </>
+          </div>
         )}
       </section>
       <section>
         {activeTab === 3 && (
-            <div className="ml-[4rem] flex flex-wrap">
+            <div className="pl-3 md:pl-0 mt-4 md:mt-0 md:ml-[2rem] lg:ml-[4rem] flex flex-wrap">
                 {!data ? (<Loader />) : (
                     data.map(product => (
                         <div key={product._id}>

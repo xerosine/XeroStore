@@ -91,7 +91,7 @@ const Navigation = ({setDarkMode, darkMode}) => {
           showSidebar ? "w-[4%] min-w-[60px] px-4" : "w-0 px-0"
         } lg:w-[4%] lg:min-w-[60px] lg:px-4 flex justify-between py-4 flex-col text-slate-900  
         transition-padding duration-200 ease-linear
-        dark:text-slate-300 bg-slate-300 dark:bg-slate-950 min-h-[100vh] fixed group`}
+        dark:text-slate-300 bg-slate-300 dark:bg-slate-950 min-h-dvh fixed group`}
         id="navigation-container"
       >
         <div className="flex flex-col justify-center space-y-2 max-h-[50%]">
