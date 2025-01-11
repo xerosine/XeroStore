@@ -18,3 +18,13 @@
   width: auto;
 }
 
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: calc(5.5% + 100px);
+  }
+
+  .sidebar .nav-item-name {
+    opacity: 1;
+    width: auto;
+  }
+}

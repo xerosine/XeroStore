@@ -8,7 +8,7 @@ import {
   AiOutlineUserAdd,
   AiOutlineShoppingCart,
   AiFillMoon,
-  AiOutlineSun
+  AiOutlineSun,
 } from "react-icons/ai";
 import { FaHeart, FaRegHeart, FaShoppingCart } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
@@ -19,9 +19,9 @@ import { useLogoutMutation } from "../../redux/api/userApiSlice";
 import { logout } from "../../redux/features/auth/authSlice";
 import FavoriteCount from "../Product/FavoriteCount";
 
-const Navigation = ({setDarkMode, darkMode}) => {
+const Navigation = ({ setDarkMode, darkMode }) => {
   console.log(darkMode);
-  
+
   const { userInfo } = useSelector((state) => state.auth);
   const { cartItems } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
@@ -58,9 +58,9 @@ const Navigation = ({setDarkMode, darkMode}) => {
   };
 
   const handleChangeMode = () => {
-    setDarkMode(darkMode => !darkMode)
-    localStorage.setItem('mode', JSON.stringify(!darkMode))
-  }
+    setDarkMode((darkMode) => !darkMode);
+    localStorage.setItem("mode", JSON.stringify(!darkMode));
+  };
 
   useEffect(() => {
     document.addEventListener("mousedown", closeSidebar);
@@ -88,7 +88,7 @@ const Navigation = ({setDarkMode, darkMode}) => {
         onClick={(e) => closeSidebar(e)}
         ref={sidebarRef}
         className={`${
-          showSidebar ? "w-[4%] min-w-[60px] px-4" : "w-0 px-0"
+          showSidebar ? "sidebar px-4" : "w-0 px-0"
         } lg:w-[4%] lg:min-w-[60px] lg:px-4 flex justify-between py-4 flex-col text-slate-900  
         transition-padding duration-200 ease-linear
         dark:text-slate-300 bg-slate-300 dark:bg-slate-950 min-h-dvh fixed group`}
@@ -100,10 +100,14 @@ const Navigation = ({setDarkMode, darkMode}) => {
             className="flex items-center text-sm font-semibold lg:text-lg lg:font-normal
             ml-[0.1rem] transition-transform transform hover:translate-x-2"
           >
-            {({isActive}) => (
+            {({ isActive }) => (
               <>
                 <div className="mr-2 mt-10 lg:mt-[3rem] dark:text-indigo-600">
-                  {isActive ? <AiFillHome size={27} /> : <AiOutlineHome size={27} />}
+                  {isActive ? (
+                    <AiFillHome size={27} />
+                  ) : (
+                    <AiOutlineHome size={27} />
+                  )}
                 </div>
                 <span className="nav-item-name mt-10 lg:mt-[3rem]">Home</span>
               </>
@@ -114,10 +118,14 @@ const Navigation = ({setDarkMode, darkMode}) => {
             className="flex items-center text-sm font-semibold lg:text-lg lg:font-normal
             ml-[0.1rem] transition-transform transform hover:translate-x-2"
           >
-            {({isActive}) => (
+            {({ isActive }) => (
               <>
                 <div className="mr-2 mt-10 lg:mt-[3rem] dark:text-indigo-600">
-                  {isActive ? <AiFillShopping size={27} /> : <AiOutlineShopping size={27} />}
+                  {isActive ? (
+                    <AiFillShopping size={27} />
+                  ) : (
+                    <AiOutlineShopping size={27} />
+                  )}
                 </div>
                 <span className="nav-item-name mt-10 lg:mt-[3rem]">Shop</span>
               </>
@@ -128,10 +136,14 @@ const Navigation = ({setDarkMode, darkMode}) => {
             className="flex items-center text-sm font-semibold lg:text-lg lg:font-normal
             ml-[0.1rem] transition-transform transform hover:translate-x-2"
           >
-            {({isActive}) => (
+            {({ isActive }) => (
               <>
                 <div className="mr-2 mt-10 lg:mt-[3rem] dark:text-indigo-600">
-                  {isActive ? <FaShoppingCart size={27} /> : <AiOutlineShoppingCart size={27} />}
+                  {isActive ? (
+                    <FaShoppingCart size={27} />
+                  ) : (
+                    <AiOutlineShoppingCart size={27} />
+                  )}
                 </div>
                 <span className="nav-item-name mt-10 lg:mt-[3rem]">Cart</span>
                 <div className="absolute left-[20px] top-[35px]">
@@ -152,24 +164,29 @@ const Navigation = ({setDarkMode, darkMode}) => {
             className="flex items-center text-sm font-semibold lg:text-lg lg:font-normal
             ml-[0.1rem] transition-transform transform hover:translate-x-2"
           >
-            {({isActive}) => (
+            {({ isActive }) => (
               <>
                 <div className="mr-2 mt-10 lg:mt-[3rem] dark:text-indigo-600">
                   {isActive ? <FaHeart size={27} /> : <FaRegHeart size={27} />}
                 </div>
-                <span className="nav-item-name mt-10 lg:mt-[3rem]">Favorites</span>
+                <span className="nav-item-name mt-10 lg:mt-[3rem]">
+                  Favorites
+                </span>
                 <FavoriteCount />
               </>
             )}
           </NavLink>
-          <button 
-          onClick={handleChangeMode}
-          className="flex items-center text-sm font-semibold lg:text-lg lg:font-normal
-          ml-[0.1rem] transition-transform transform hover:translate-x-2">
+          <button
+            onClick={handleChangeMode}
+            className="flex items-center text-sm font-semibold lg:text-lg lg:font-normal
+          ml-[0.1rem] transition-transform transform hover:translate-x-2"
+          >
             <div className="mr-2 mt-10 lg:mt-[3rem] dark:text-indigo-600">
-                  {darkMode ? <AiOutlineSun size={27} /> : <AiFillMoon size={27} />}
-                </div>
-                <span className="nav-item-name mt-10 lg:mt-[3rem]">{darkMode ? "Light" : "Dark"}</span>
+              {darkMode ? <AiOutlineSun size={27} /> : <AiFillMoon size={27} />}
+            </div>
+            <span className="nav-item-name mt-10 lg:mt-[3rem]">
+              {darkMode ? "Light" : "Dark"}
+            </span>
           </button>
         </div>
 
@@ -205,7 +222,13 @@ const Navigation = ({setDarkMode, darkMode}) => {
           </button>
           {userInfo && (
             <ul
-              className={`${dropdownOpen ? "h-[17rem] md:h-[19.5rem] lg:h-[23rem] py-1.5" : "h-0 py-0"} 
+              className={`${
+                dropdownOpen
+                  ? userInfo.isAdmin
+                    ? "h-[17rem] md:h-[19.5rem] lg:h-[23rem] py-1.5"
+                    : "h-[5.5rem] md:h-[6.5rem] lg:h-[7.5rem] py-1.5"
+                  : "h-0 py-0"
+              } ${showSidebar ? "w-full" : ""}
               mt-2 absolute left-0 space-y-1 md:space-y-2 [transition:width_200ms_200ms,height_300ms]
               w-0 overflow-hidden bg-slate-200 dark:bg-slate-900 group-hover:w-full bottom-8`}
             >
